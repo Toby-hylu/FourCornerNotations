@@ -1,0 +1,20 @@
+\documentclass{fcvertical}
+\usepackage{fcTailo}
+%
+% ----- Table
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\RequirePackage{array}
+\newcolumntype{L}{ >{\raggedright\arraybackslash}X }
+%
+% ----- file
+\newcommand*{\FilePath}[1]{marked/佛說眼明經/#1.tex}
+%
+% ----- baseline compensator
+\newcommand*{\comp}[1]{\raisebox{.25em}[0pt][0pt]{#1}}% 用於表格的基線補償
+%
+\begin{document}
+\noindent%
+\input{\FilePath{001}}
+
+\end{document}

@@ -1,0 +1,27 @@
+# Global ignores for common build artifacts and temporary files
+# These patterns use double asterisks (**) to match across any directory level.
+
+# Operating System specific files
+.DS_Store
+
+# Python specific ignores
+**/__pycache__/
+**/venv/
+
+# LaTeX specific ignores
+**/*.aux
+**/*.log
+**/*.blg
+**/*.bbl
+**/*.idx
+**/*.ind
+**/*.ilg
+**/*.lof
+**/*.lot
+**/*.out
+**/*.synctex.gz
+**/*.toc
+**/*.nav
+**/*.snm
+**/*.fdb_latexmk
+**/*.fls

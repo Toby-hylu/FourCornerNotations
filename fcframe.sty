@@ -1,0 +1,66 @@
+% Provides package fcframe
+%
+\ProvidesPackage{fcframe}
+\RequirePackage{tikz}
+\RequirePackage{amsmath}
+\RequirePackage{xstring}
+%
+% ----- TikZ settings
+\pgfmathsetmacro{\emFontsize}{1.44em}% 1.44em when using font=\Large
+\NewDocumentCommand{\FourCornerFrame}{m m m m m}{%
+  \begin{tikzpicture}[%
+    x=\emFontsize,y=\emFontsize,%
+    corner/.style={%
+      %draw,%
+      inner sep=0pt,%
+      outer sep=0pt,%
+      anchor=center,%
+      font=\scriptsize,%
+      align=center,%
+      minimum size=0.5*\emFontsize,%
+    },%
+  ]%
+    \path[use as bounding box] (-.5, -.5) rectangle (.5, .5);%
+    \node[corner] (3) at (-.2, .2){\raisebox{0em}[0pt][0pt]{\txtfc{#4}}};%
+    \node[corner] (4) at ( .2, .2){\raisebox{0em}[0pt][0pt]{\txtfc{#5}}};%
+    \node[corner] (1) at (-.2,-.2){\raisebox{0em}[0pt][0pt]{\txtfc{#2}}};%
+    \node[corner] (2) at ( .2,-.2){\raisebox{0em}[0pt][0pt]{\txtfc{#3}}};%
+    \IfStrEq{#1}{last}{% 末字本調
+      \draw (current bounding box.east)|-(current bounding box.north);%
+    }{%
+    \IfStrEq{#1}{first}{% 首字本調
+      \draw (current bounding box.west)|-(current bounding box.north);%
+    }{}%
+    }%
+  \end{tikzpicture}%
+}%
+\NewDocumentCommand{\Mark}{m m}{%
+  %\leavevmode%
+  \begin{tikzpicture}[
+    x=\emFontsize,%
+    y=\emFontsize,%
+    %baseline=-.35em%
+  ]%
+    % character itself
+    \path[use as bounding box] (-.5, -.5) rectangle (.5, .5);%
+    %\draw (current bounding box.south west)rectangle(current bounding box.north east);% This is for test
+    \node[%
+      %draw,%
+      inner sep=0pt,%
+      outer sep=0pt,%
+      minimum width=\emFontsize,%
+      minimum height=\emFontsize,%
+      anchor=north,%
+      align=center,%
+      font=\Large,%
+    ] (char) at (current bounding box.south) {\raisebox{0em}[0pt][0pt]{#1}};%
+    %
+    % Four corner notation
+    \node[%
+      inner sep=0pt,%
+      outer sep=0pt,%
+      anchor=center,%
+    ] (tsuim) at (current bounding box.center) {#2};%
+  \end{tikzpicture}%
+}%
+\endinput
