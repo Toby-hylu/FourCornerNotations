@@ -1,0 +1,26 @@
+\documentclass{fcvertical}
+\usepackage{fcTailo}
+\usepackage{zhnumber}
+%
+% ----- Table
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{array}
+\newcolumntype{L}{ >{\raggedright\arraybackslash}X }
+%
+% ----- baseline compensator
+\newcommand*{\comp}[1]{\raisebox{.25em}[0pt][0pt]{#1}}% 用於表格的基線補償
+% ----- question counter
+\newcounter{question}%
+%\renewcommand{\thequestion}{\zhnumber{\value{question}}}%
+\newcommand*{\QA}[2]{%
+  \stepcounter{question}\medskip\par%
+  {\noindent}問{\zhnumber{\thequestion}：#1}\\%
+  {\noindent}答{\zhnumber{\thequestion}：#2}\\%
+}%
+% ----- File path
+\newcommand*{\FilePath}[1]{description/#1.tex}
+% 
+\begin{document}
+\input{\FilePath{Tailo}}%
+\end{document}
