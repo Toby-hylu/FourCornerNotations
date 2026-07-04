@@ -35,7 +35,7 @@
 2. 打開`json/mysystem/symbol.json`，定義您系統需要的符號：
   - 請參照`json/Tailo/symbol.json`的方式定義。
   - 一般Unicode字元請使用小寫u開頭，例如u3105表示ㄅ。
-  - 組合用濁點可能在前或在後，視乎字型。我採用的是一點明體（https://github.com/ichitenfont/I.Ming），濁點在符號之前，如u3099u3105在一點明體表示帶濁點的ㄅ。如果您使用Noto Sans CJK，則這個序列應該是u3105u3099。
+  - 組合用濁點可能在前或在後，視乎字型。我採用的是一點明體（[https://github.com/ichitenfont/I.Ming]），濁點在符號之前，如u3099u3105在一點明體表示帶濁點的ㄅ。如果您使用Noto Sans CJK，則這個序列應該是u3105u3099。
   - 由於使用LaTeX，我提供了「+」這個特殊符號，跑python後它會轉換成`\ooalign`巨集把前後兩個字疊起來。
   - 符號表要有聲調符號。
 3. 打開`json/mysystem/symbol.json`，定義您系統的「不含聲調」音系
@@ -44,8 +44,8 @@
   - 韻母分析不一定要照glide、nucleus、coda分析，例如粵語就沒有韻母介音。
 4. 請在`FourCornerTools/`下建立`mysystem.py`，參照`FourCornerTools/Tailo.py`的`FcMakerTailo`類別定義您的`FcMakerMysystem`類別。
   - 注意：您的類別要是`FourCornerTools/shared.py`定義的`FcMaker`的子類別。
-  - 如果沒有特別的變調需求，您可以不實作`\_sandhi`函式。詞首本調、其餘變調定義為`regs[0].sandhi = '[first]'`，詞末本調、其餘變調定義為`regs[-1].sandhi = '[last]'`（如範例的台語）。
-  - 請您實作`syllable\_lister()`函式，參照範例寫下枚舉`mysystem`所有「含聲調」音節的代碼。
+  - 如果沒有特別的變調需求，您可以不實作`_sandhi`函式。詞首本調、其餘變調定義為`regs[0].sandhi = '[first]'`，詞末本調、其餘變調定義為`regs[-1].sandhi = '[last]'`（如範例的台語）。
+  - 請您實作`syllable_lister()`函式，參照範例寫下枚舉`mysystem`所有「含聲調」音節的代碼。
 5. 打開`main.py`，創建您類別的物件，執行其成員函式`.lister()`。
 6. 檢查`fcmysystem.sty`是否正常產生，打開它看裡面是否有正確的符號巨集與四角標音巨集。此`.sty`應該會是一個數千行的檔案。
 7. 若您能夠專門在`description/`檔案夾下寫一個`.tex`描述您的系統，或許會更有利於可視化。畢竟`.json`並不總是很直觀。
