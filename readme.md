@@ -35,7 +35,7 @@
 2. 打開`json/mysystem/symbol.json`，定義您系統需要的符號：
   - 請參照`json/Tailo/symbol.json`的方式定義。
   - 一般Unicode字元請使用小寫u開頭，例如u3105表示ㄅ。
-  - 組合用濁點可能在前或在後，視乎字型。我採用的是一點明體（[https://github.com/ichitenfont/I.Ming]），濁點在符號之前，如u3099u3105在一點明體表示帶濁點的ㄅ。如果您使用Noto Sans CJK，則這個序列應該是u3105u3099。
+  - 組合用濁點可能在前或在後，視乎字型。我採用的是[一點明體](https://github.com/ichitenfont/I.Ming)，濁點在符號之前，如u3099u3105在一點明體表示帶濁點的ㄅ。如果您使用Noto Sans CJK，則這個序列應該是u3105u3099。
   - 由於使用LaTeX，我提供了「+」這個特殊符號，跑python後它會轉換成`\ooalign`巨集把前後兩個字疊起來。
   - 符號表要有聲調符號。
 3. 打開`json/mysystem/symbol.json`，定義您系統的「不含聲調」音系
